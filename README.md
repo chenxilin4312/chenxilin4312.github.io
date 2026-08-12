@@ -45,7 +45,7 @@ Feel free to check [our documentation](https://docs.astro.build) or jump into ou
 ## Deployment
 
 The site is published with GitHub Pages at
-<https://kevinlin4312-del.github.io/chenxilin/>.
+<https://kevinlin4312-del.github.io/chenxilin.github.io/>.
 
 `npm run deploy` builds the site and force-pushes `dist/` to the `gh-pages`
 branch, which Pages serves. `main` holds the source only.

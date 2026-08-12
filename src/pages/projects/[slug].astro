@@ -1,0 +1,313 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ImagePlaceholder from "../../components/ImagePlaceholder.astro";
+import { projects } from "../../lib/data";
+
+export function getStaticPaths() {
+  return projects.map((p, i) => ({
+    params: { slug: p.slug },
+    props: {
+      project: p,
+      prev: projects[(i - 1 + projects.length) % projects.length],
+      next: projects[(i + 1) % projects.length],
+    },
+  }));
+}
+
+const { project: p, prev, next } = Astro.props;
+---
+
+<Layout
+  title={`${p.title} — Chenxi Lin`}
+  description={p.dek}
+  sample={p.number}
+>
+  <article>
+    <header class="head">
+      <div class="container">
+        <a href="/#work" class="back" data-reveal>&larr; Sample Log</a>
+
+        <p class="sample-tag head__tag" data-reveal>
+          Sample {p.number} &middot; {p.lab} &middot; {p.role}
+        </p>
+        <h1 class="display head__title" data-reveal>{p.title}</h1>
+
+        <dl class="meta" data-reveal>
+          <div>
+            <dt>Where</dt>
+            <dd>{p.location}</dd>
+          </div>
+          <div>
+            <dt>When</dt>
+            <dd>{p.span}</dd>
+          </div>
+          <div>
+            <dt>Techniques</dt>
+            <dd>{p.techniques.join(", ")}</dd>
+          </div>
+        </dl>
+
+        {
+          p.liveUrl && (
+            <a class="btn" href={p.liveUrl} target="_blank" rel="noopener" data-reveal>
+              Visit {p.lab} &rarr;
+            </a>
+          )
+        }
+      </div>
+    </header>
+
+    <div class="container">
+      <ImagePlaceholder
+        alt={p.heroAlt}
+        ratio="16 / 9"
+        label={p.title}
+        src={p.heroImage}
+        variant={p.heroImageVariant}
+        caption={p.heroCaption}
+      />
+    </div>
+
+    <div class="container body">
+      <p class="hook" data-reveal>{p.hook}</p>
+
+      {
+        p.stats && (
+          <div class="stats" data-reveal>
+            {p.stats.map((s) => (
+              <div class="stat">
+                <p class="display stat__value">{s.value}</p>
+                <p class="stat__label">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        )
+      }
+
+      <div class="sections">
+        {
+          p.sections.map((s) => (
+            <section class={s.image ? "s s--split" : "s"} data-reveal>
+              <div class="s__text">
+                <h2 class="s__heading">{s.heading}</h2>
+                <div class="s__body">
+                  {s.body.map((para) => (
+                    <p>{para}</p>
+                  ))}
+                </div>
+              </div>
+              {s.image && (
+                <div class="s__image">
+                  <ImagePlaceholder
+                    alt={s.image.alt}
+                    ratio="16 / 10"
+                    src={s.image.src}
+                    label={s.image.label}
+                    caption={s.image.caption}
+                    variant={s.image.variant}
+                  />
+                </div>
+              )}
+            </section>
+          ))
+        }
+      </div>
+    </div>
+
+    <nav class="pager" aria-label="More samples">
+      <a href={`/projects/${prev.slug}`} class="pager__link">
+        <span class="pager__dir">&larr; Previous</span>
+        <span class="pager__title">{prev.title}</span>
+      </a>
+      <a href={`/projects/${next.slug}`} class="pager__link pager__link--next">
+        <span class="pager__dir">Next &rarr;</span>
+        <span class="pager__title">{next.title}</span>
+      </a>
+    </nav>
+  </article>
+</Layout>
+
+<style>
+  .head {
+    padding-block: var(--sp-5) var(--sp-5);
+  }
+
+  .back {
+    display: block;
+    text-decoration: none;
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    color: var(--ink-soft);
+    margin-bottom: var(--sp-3);
+  }
+
+  .back:hover {
+    color: var(--cobalt);
+  }
+
+  .head__tag {
+    margin-bottom: var(--sp-2);
+  }
+
+  .head__title {
+    font-size: clamp(3rem, 9vw, var(--fs-3xl));
+    margin-bottom: var(--sp-3);
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-5);
+    margin: 0 0 var(--sp-3);
+    padding: var(--sp-3) 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .meta dt {
+    font-size: var(--fs-2xs);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cobalt);
+    margin-bottom: 0.3em;
+  }
+
+  .meta dd {
+    margin: 0;
+    max-width: 34ch;
+    font-size: var(--fs-sm);
+  }
+
+  .body {
+    padding-block: var(--sp-6);
+  }
+
+  .hook {
+    font-family: var(--font-body);
+    font-weight: 200;
+    font-size: clamp(1.4rem, 3vw, var(--fs-lg));
+    line-height: 1.4;
+    max-width: 42ch;
+    margin-bottom: var(--sp-6);
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--sp-4);
+    padding: var(--sp-4) 0;
+    margin-bottom: var(--sp-6);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  @media (min-width: 640px) {
+    .stats {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .stat__value {
+    font-size: var(--fs-xl);
+    color: var(--cobalt-deep);
+  }
+
+  .stat__label {
+    font-size: var(--fs-xs);
+    color: var(--ink-soft);
+    max-width: 16ch;
+  }
+
+  .sections {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-7);
+    max-width: 72rem;
+  }
+
+  .s__text {
+    max-width: 62ch;
+  }
+
+  .s__heading {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: var(--fs-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cobalt);
+    margin-bottom: var(--sp-2);
+  }
+
+  .s__body {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    font-size: var(--fs-base);
+  }
+
+  .s__image {
+    margin-top: var(--sp-3);
+  }
+
+  /* Sections with a figure: text left, image right on wide screens. */
+  .s--split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-4);
+  }
+
+  @media (min-width: 900px) {
+    .s--split {
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.2fr);
+      align-items: center;
+      gap: var(--sp-6);
+    }
+
+    .s--split .s__text {
+      max-width: none;
+    }
+
+    .s--split .s__image {
+      margin-top: 0;
+    }
+  }
+
+  .pager {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid var(--rule);
+  }
+
+  .pager__link {
+    text-decoration: none;
+    color: var(--ink);
+    padding: var(--sp-4) var(--sp-3);
+    transition: background 0.2s var(--ease-out);
+  }
+
+  .pager__link:hover {
+    background: var(--paper-raised);
+  }
+
+  .pager__link--next {
+    text-align: right;
+    border-left: 1px solid var(--rule);
+  }
+
+  .pager__dir {
+    display: block;
+    font-size: var(--fs-2xs);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 0.3em;
+  }
+
+  .pager__title {
+    font-family: var(--font-display);
+    font-size: var(--fs-md);
+  }
+</style>

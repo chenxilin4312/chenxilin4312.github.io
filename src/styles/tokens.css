@@ -1,0 +1,51 @@
+:root {
+  /* Color — "nitrile blue," pulled from the actual gloves worn across three labs */
+  --paper: #fcfcfb;
+  --paper-raised: #f2f2ef;
+  --ink: #12161c;
+  --ink-soft: #4a5261;
+  --cobalt: #1e4fd8;
+  --cobalt-deep: #0b2e7a;
+  --fluor: #29d3c4;
+  --rule: #dcd8ce;
+
+  /* Type */
+  --font-display: "Nightingale", "Iowan Old Style", serif;
+  --font-body: "Mori", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-hand: "Comico", cursive;
+
+  --fs-2xs: 0.6875rem;
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.9375rem;
+  --fs-base: 1.0625rem;
+  --fs-md: 1.25rem;
+  --fs-lg: 1.75rem;
+  --fs-xl: 2.5rem;
+  --fs-2xl: 3.75rem;
+  --fs-3xl: 5.5rem;
+  --fs-4xl: 8rem;
+
+  /* Space — 8px base */
+  --sp-1: 0.5rem;
+  --sp-2: 1rem;
+  --sp-3: 1.5rem;
+  --sp-4: 2rem;
+  --sp-5: 3rem;
+  --sp-6: 4rem;
+  --sp-7: 6rem;
+  --sp-8: 8rem;
+  --sp-9: 12rem;
+
+  --container-max: 78rem;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  /* Site commits to a light identity (nitrile blue reads correctly against
+     paper); dark mode gets a gently dimmed paper rather than inverting. */
+  :root {
+    --paper: #efece5;
+    --paper-raised: #e7e3da;
+  }
+}

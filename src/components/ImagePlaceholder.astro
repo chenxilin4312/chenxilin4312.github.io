@@ -1,0 +1,122 @@
+---
+export type Props = {
+  alt: string;
+  ratio?: string; // e.g. "16 / 9"
+  label?: string;
+  src?: string;
+  caption?: string;
+  variant?: "photo" | "figure"; // photo: dark, crops to fill. figure: light, shows in full.
+};
+const {
+  alt,
+  ratio = "16 / 9",
+  label,
+  src,
+  caption,
+  variant = "photo",
+} = Astro.props as Props;
+---
+
+<div class="frame" data-reveal-image style={`aspect-ratio: ${ratio};`}>
+  {
+    src ? (
+      <Fragment>
+        <div
+          class={`frame__inner frame__inner--${variant}`}
+          data-parallax
+        >
+          <img class="frame__img" src={src} alt={alt} loading="lazy" />
+        </div>
+        {caption && <span class="frame__caption">{caption}</span>}
+      </Fragment>
+    ) : (
+      <div class="frame__inner" data-parallax role="img" aria-label={alt}>
+        <span class="frame__label">{label}</span>
+        <span class="hand frame__note">figure pending</span>
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .frame {
+    position: relative;
+    overflow: hidden;
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+  }
+
+  .frame__inner {
+    position: absolute;
+    inset: -8% -2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sp-1);
+    background-image:
+      linear-gradient(var(--rule) 1px, transparent 1px),
+      linear-gradient(90deg, var(--rule) 1px, transparent 1px);
+    background-size: 28px 28px;
+    background-position: center;
+  }
+
+  .frame__label {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: var(--fs-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    background: var(--paper);
+    padding: 0.3em 0.7em;
+    border: 1px solid var(--rule);
+  }
+
+  .frame__note {
+    font-size: var(--fs-md);
+    transform: rotate(-2deg);
+  }
+
+  .frame__inner--photo {
+    background: #0c0c0d;
+    display: block;
+  }
+
+  .frame__inner--photo .frame__img {
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .frame__inner--figure {
+    background: var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4%;
+  }
+
+  .frame__inner--figure .frame__img {
+    object-fit: contain;
+  }
+
+  .frame__img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .frame__caption {
+    position: absolute;
+    left: var(--sp-2);
+    bottom: var(--sp-2);
+    z-index: 1;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: var(--fs-xs);
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    background: var(--paper);
+    padding: 0.3em 0.7em;
+    border: 1px solid var(--rule);
+  }
+</style>

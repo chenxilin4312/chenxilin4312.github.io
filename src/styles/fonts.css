@@ -1,0 +1,49 @@
+/* DT Nightingale — display serif, headlines only */
+@font-face {
+  font-family: "Nightingale";
+  src: url("/fonts/nightingale/DTNightingale-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* PP Mori — workhorse sans, everything functional */
+@font-face {
+  font-family: "Mori";
+  src: url("/fonts/mori/PPMori-Extralight.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Mori";
+  src: url("/fonts/mori/PPMori-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Mori";
+  src: url("/fonts/mori/PPMori-Italic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Mori";
+  src: url("/fonts/mori/PPMori-Semibold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Comico — handwritten accent, personal-touch moments only */
+@font-face {
+  font-family: "Comico";
+  src:
+    url("/fonts/comico/Comico-Regular.woff2") format("woff2"),
+    url("/fonts/comico/Comico-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

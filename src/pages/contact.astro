@@ -1,0 +1,125 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Contact — Chenxi Lin"
+  description="Get in touch with Chenxi Lin — email, LinkedIn, and résumé."
+>
+  <section class="head">
+    <div class="container">
+      <a href="/" class="back" data-reveal>&larr; Home</a>
+      <p class="sample-tag" data-reveal>Open to biotech R&amp;D roles</p>
+      <h1 class="display title" data-reveal>Let's talk.</h1>
+      <p class="lede" data-reveal>
+        Reach out about research roles, collaborations, or Joey ELM &mdash;
+        I read everything that comes in.
+      </p>
+
+      <div class="links" data-reveal>
+        <a class="link" href="mailto:cl2732@cornell.edu">
+          <span class="link__label">Email</span>
+          <span class="link__value">cl2732@cornell.edu</span>
+        </a>
+        <a
+          class="link"
+          href="https://linkedin.com/in/chenxilin4312"
+          target="_blank"
+          rel="noopener"
+        >
+          <span class="link__label">LinkedIn</span>
+          <span class="link__value">linkedin.com/in/chenxilin4312</span>
+        </a>
+        <a class="link" href="tel:+19172251626">
+          <span class="link__label">Phone</span>
+          <span class="link__value">(917) 225-1626</span>
+        </a>
+        <a class="link" href="/resume.pdf" target="_blank" rel="noopener">
+          <span class="link__label">Résumé</span>
+          <span class="link__value">Download PDF &rarr;</span>
+        </a>
+      </div>
+
+      <p class="hand note" data-reveal>based in New York, NY &amp; Ithaca, NY</p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .head {
+    padding-block: var(--sp-6) var(--sp-8);
+    min-height: 60vh;
+  }
+
+  .back {
+    display: block;
+    text-decoration: none;
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    color: var(--ink-soft);
+    margin-bottom: var(--sp-3);
+  }
+
+  .back:hover {
+    color: var(--cobalt);
+  }
+
+  .title {
+    font-size: clamp(3.5rem, 11vw, var(--fs-4xl));
+    margin-block: var(--sp-2);
+  }
+
+  .lede {
+    color: var(--ink-soft);
+    font-size: var(--fs-md);
+    max-width: 46ch;
+    margin-bottom: var(--sp-5);
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    max-width: 42rem;
+  }
+
+  .link {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--sp-2);
+    text-decoration: none;
+    color: var(--ink);
+    padding-block: var(--sp-3);
+    border-top: 1px solid var(--rule);
+    transition: color 0.2s var(--ease-out);
+  }
+
+  .link:last-child {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .link:hover {
+    color: var(--cobalt);
+  }
+
+  .link__label {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .link__value {
+    font-family: var(--font-display);
+    font-size: var(--fs-lg);
+  }
+
+  .note {
+    margin-top: var(--sp-5);
+    font-size: var(--fs-md);
+    transform: rotate(-1deg);
+    display: inline-block;
+  }
+</style>

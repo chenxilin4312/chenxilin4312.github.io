@@ -1,0 +1,67 @@
+<footer class="footer">
+  <div class="container footer__inner">
+    <div>
+      <p class="display footer__name">Chenxi Lin</p>
+      <p class="footer__tag">Biomedical Engineering, Cornell — building &amp; benching in equal measure.</p>
+    </div>
+    <div class="footer__links">
+      <a href="mailto:cl2732@cornell.edu">cl2732@cornell.edu</a>
+      <a href="https://linkedin.com/in/chenxilin4312" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="/resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
+    </div>
+  </div>
+  <div class="container">
+    <p class="footer__note hand">sample log closed — thanks for reading</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--rule);
+    padding-block: var(--sp-6) var(--sp-4);
+    margin-top: var(--sp-8);
+  }
+
+  .footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--sp-4);
+    padding-bottom: var(--sp-4);
+  }
+
+  .footer__name {
+    font-size: var(--fs-lg);
+    margin-bottom: var(--sp-1);
+  }
+
+  .footer__tag {
+    color: var(--ink-soft);
+    font-size: var(--fs-sm);
+    max-width: 30ch;
+  }
+
+  .footer__links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    font-size: var(--fs-sm);
+    font-weight: 600;
+  }
+
+  .footer__links a {
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  .footer__links a:hover {
+    color: var(--cobalt);
+  }
+
+  .footer__note {
+    font-size: var(--fs-md);
+    padding-top: var(--sp-3);
+    border-top: 1px solid var(--rule);
+    transform: rotate(-1deg);
+  }
+</style>

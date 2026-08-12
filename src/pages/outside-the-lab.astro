@@ -1,0 +1,237 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ImagePlaceholder from "../components/ImagePlaceholder.astro";
+
+const hobbies = [
+  {
+    title: "DJing",
+    body: "I DJ frat parties in whatever time is left after the bench and the keyboard — building a set scratches the same itch as building anything else.",
+    src: "/images/hobbies/djing.jpg",
+    note: "mix coming soon",
+  },
+  {
+    title: "Cooking & Baking",
+    body: "Same instinct as the bench shows up in the kitchen too — follow a method once, then push on it until it's mine.",
+  },
+];
+
+const makerClubGallery = {
+  src: "/images/maker-club/gallery.jpg",
+  alt: "Same laser-cut wooden paddle from raw cut to finished front and back: unpainted, hand-painted with a sky and clouds design, and painted black with event lineup text",
+  caption: "Same paddle — raw cut, then finished front and back",
+};
+
+const activities = [
+  {
+    org: "Cornell Maker Club",
+    role: "Member",
+    span: "January 2026 — Present",
+    body: "I take on semesterly commissions cutting Greek paddles and wooden letters for other students, on top of my own CAD and laser-cutting projects, and help other members troubleshoot equipment.",
+  },
+  {
+    org: "Lambda Phi Epsilon",
+    role: "Vice-President External",
+    span: "March 2025 — Present",
+    body: "I coordinate social events and collaborations with other cultural and social orgs on campus, and run fundraising as Chair — we've brought in over $2,000 a semester since I took that over.",
+  },
+  {
+    org: "Cornell Undergraduate Research Board",
+    role: "Student Mentor",
+    span: "March 2024 — Present",
+    body: "I mentor cohorts of 6–10 undergraduates who are trying to figure out how to even get started in research — how to reach out to a lab, what to ask, what to look for.",
+  },
+];
+---
+
+<Layout
+  title="Outside the Lab — Chenxi Lin"
+  description="Maker Club builds, Lambda Phi Epsilon, and mentoring — what Chenxi Lin does outside the lab."
+>
+  <header class="head">
+    <div class="container">
+      <a href="/" class="back" data-reveal>&larr; Home</a>
+      <p class="hand head__note" data-reveal>also true about me &mdash;</p>
+      <h1 class="display head__title" data-reveal>Outside the Lab</h1>
+      <p class="head__lede" data-reveal>
+        Research fills most of my week, but not all of it. This is the rest.
+      </p>
+    </div>
+  </header>
+
+  <section class="container gallery">
+    <ImagePlaceholder
+      alt={makerClubGallery.alt}
+      ratio="21 / 9"
+      src={makerClubGallery.src}
+      caption={makerClubGallery.caption}
+      variant="photo"
+    />
+  </section>
+
+  <section class="container list">
+    {
+      activities.map((a) => (
+        <div class="row" data-reveal>
+          <div class="row__meta">
+            <p class="sample-tag">{a.role}</p>
+            <p class="row__span">{a.span}</p>
+          </div>
+          <div class="row__body">
+            <h2 class="display row__org">{a.org}</h2>
+            <p>{a.body}</p>
+          </div>
+        </div>
+      ))
+    }
+
+  </section>
+
+  <section class="container hobbies">
+    <p class="hand hobbies__note" data-reveal>and off the clock &mdash;</p>
+    <h2 class="display section-title" data-reveal>Hobbies</h2>
+
+    <div class="hobbies__grid">
+      {
+        hobbies.map((h) => (
+          <div class="hobby" data-reveal>
+            <ImagePlaceholder
+              alt={h.title}
+              ratio="21 / 9"
+              label={h.title}
+              src={h.src}
+              variant="photo"
+            />
+            <h3 class="display hobby__title">{h.title}</h3>
+            {h.note && <p class="hand hobby__note">{h.note}</p>}
+            <p class="hobby__body">{h.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .head {
+    padding-block: var(--sp-5) var(--sp-6);
+  }
+
+  .back {
+    display: block;
+    text-decoration: none;
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    color: var(--ink-soft);
+    margin-bottom: var(--sp-3);
+  }
+
+  .back:hover {
+    color: var(--cobalt);
+  }
+
+  .head__note {
+    font-size: var(--fs-lg);
+    transform: rotate(-2deg);
+    display: inline-block;
+    margin-bottom: var(--sp-1);
+  }
+
+  .head__title {
+    font-size: clamp(2.75rem, 7vw, var(--fs-2xl));
+    margin-bottom: var(--sp-2);
+  }
+
+  .head__lede {
+    color: var(--ink-soft);
+    font-size: var(--fs-md);
+    max-width: 44ch;
+  }
+
+  .gallery {
+    margin-bottom: var(--sp-6);
+  }
+
+  .list {
+    padding-bottom: var(--sp-7);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-2);
+    padding-block: var(--sp-4);
+    border-top: 1px solid var(--rule);
+  }
+
+  @media (min-width: 720px) {
+    .row {
+      grid-template-columns: 1fr 2fr;
+      gap: var(--sp-5);
+    }
+  }
+
+  .row__span {
+    font-size: var(--fs-xs);
+    color: var(--ink-soft);
+    margin-top: 0.4em;
+  }
+
+  .row__org {
+    font-size: var(--fs-lg);
+    margin-bottom: 0.3em;
+  }
+
+  .row__body p {
+    max-width: 56ch;
+    color: var(--ink-soft);
+  }
+
+  .hobbies {
+    padding-block: var(--sp-6) var(--sp-8);
+    border-top: 1px solid var(--rule);
+  }
+
+  .hobbies__note {
+    font-size: var(--fs-lg);
+    transform: rotate(-2deg);
+    display: inline-block;
+    margin-bottom: var(--sp-1);
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 5vw, var(--fs-2xl));
+    margin-bottom: var(--sp-5);
+  }
+
+  .hobbies__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-5);
+  }
+
+  @media (min-width: 720px) {
+    .hobbies__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .hobby__title {
+    font-size: var(--fs-lg);
+    margin-block: var(--sp-2) 0.3em;
+  }
+
+  .hobby__note {
+    font-size: var(--fs-md);
+    color: var(--cobalt-deep);
+    transform: rotate(-2deg);
+    display: inline-block;
+    margin-bottom: var(--sp-2);
+  }
+
+  .hobby__body {
+    color: var(--ink-soft);
+    max-width: 48ch;
+  }
+</style>

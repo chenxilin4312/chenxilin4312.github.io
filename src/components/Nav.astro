@@ -1,0 +1,112 @@
+---
+export type Props = {
+  sample?: string; // e.g. "02 / 04" — shown only on project pages
+};
+const { sample } = Astro.props as Props;
+---
+
+<header class="nav">
+  <div class="container nav__inner">
+    <a href="/" class="nav__mark">Chenxi Lin</a>
+
+    {
+      sample && (
+        <span class="nav__sample sample-tag" aria-hidden="true">
+          Sample {sample}
+        </span>
+      )
+    }
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="/#work">Work</a>
+      <a href="/outside-the-lab">Outside the Lab</a>
+      <a href="/contact">Contact</a>
+      <a href="/resume.pdf" class="nav__resume" target="_blank" rel="noopener"
+        >Résumé</a
+      >
+    </nav>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-3);
+    padding-block: var(--sp-2);
+  }
+
+  .nav__mark {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: var(--fs-md);
+    text-decoration: none;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  .nav__sample {
+    display: none;
+  }
+
+  @media (min-width: 860px) {
+    .nav__sample {
+      display: inline-flex;
+    }
+  }
+
+  .nav__links {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+
+  .nav__links a {
+    text-decoration: none;
+    color: var(--ink-soft);
+    transition: color 0.2s var(--ease-out);
+  }
+
+  .nav__links a:hover {
+    color: var(--cobalt);
+  }
+
+  .nav__resume {
+    color: var(--paper) !important;
+    background: var(--cobalt);
+    padding: 0.5em 1em;
+    border-radius: 3px;
+  }
+
+  .nav__resume:hover {
+    background: var(--cobalt-deep) !important;
+    color: var(--paper) !important;
+  }
+
+  @media (max-width: 640px) {
+    .nav__inner {
+      flex-wrap: wrap;
+      row-gap: var(--sp-1);
+    }
+    .nav__links {
+      gap: var(--sp-2);
+      font-size: var(--fs-2xs);
+      order: 3;
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+</style>

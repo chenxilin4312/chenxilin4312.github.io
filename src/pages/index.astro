@@ -1,0 +1,422 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ImagePlaceholder from "../components/ImagePlaceholder.astro";
+import { projects } from "../lib/data";
+
+const skillGroups = [
+  {
+    label: "Wet lab",
+    tools: [
+      { name: "C. elegans husbandry", detail: "NGM plate prep, RNAi & auxin treatments" },
+      { name: "Confocal & laser microscopy", detail: "live-cell imaging, laser ablation" },
+      { name: "Cell & tissue culture", detail: "2D/3D culture, protoplast isolation" },
+      { name: "Molecular biology", detail: "CRISPR, gel electrophoresis, proteomics/metabolomics prep" },
+    ],
+  },
+  {
+    label: "Computation & analysis",
+    tools: [
+      { name: "MATLAB", detail: "numerical modeling & simulation" },
+      { name: "Python", detail: "scripting & data analysis" },
+      { name: "R", detail: "statistics & curve fitting" },
+      { name: "SQL", detail: "database queries" },
+    ],
+  },
+  {
+    label: "Imaging & simulation",
+    tools: [
+      { name: "Fiji / ImageJ", detail: "microscopy image analysis" },
+      { name: "MorphoGraphX", detail: "3D cell & tissue morphology" },
+      { name: "Ansys", detail: "finite element simulation" },
+    ],
+  },
+  {
+    label: "Language",
+    tools: [{ name: "Mandarin", detail: "native fluency" }],
+  },
+];
+
+const honors = [
+  {
+    title: "Cornell Summer Experience Grant",
+    detail:
+      "June 2025 — alumni-funded award covering an unpaid summer of lab research.",
+  },
+  {
+    title: "APIA / United Health Foundation Scholarship",
+    detail:
+      "May 2024 — Diverse Scholars Initiative, part of a national push to build a more diverse health care workforce.",
+  },
+];
+---
+
+<Layout
+  title="Chenxi Lin — Biomedical Engineer & Builder"
+  description="Cornell BME researcher across cancer metabolism, plant biomechanics, and C. elegans aging — and founder of Joey ELM, an AI research assistant for wet labs."
+>
+  <section class="hero">
+    <div class="container hero__inner">
+      <p class="sample-tag hero__tag" data-hero-in>Sample Log</p>
+      <h1 class="display hero__name" data-hero-in>Chenxi Lin</h1>
+      <p class="hero__role" data-hero-in>
+        Biomedical Engineering at Cornell. Bench scientist across cancer
+        metabolism, plant biomechanics, and <em>C. elegans</em> aging &mdash; and
+        founder of an AI research assistant for wet labs.
+      </p>
+
+      <svg
+        class="hero__curve"
+        viewBox="0 0 800 160"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <path
+          data-hero-curve
+          d="M0,130 C 90,132 140,60 210,58 C 270,56 300,120 380,118 C 460,116 480,30 560,26 C 630,22 660,90 720,86 C 760,83 780,50 800,44"
+          fill="none"
+          stroke="var(--cobalt)"
+          stroke-width="2.5"
+          stroke-linecap="round"
+        ></path>
+      </svg>
+
+      <a href="#work" class="hero__scroll" data-hero-in>Scroll to the work &darr;</a>
+    </div>
+  </section>
+
+  <section id="work" class="work">
+    <div class="container">
+      <p class="section-eyebrow" data-reveal>Where the samples live</p>
+      <h2 class="display section-title" data-reveal>Four labs, one thread</h2>
+      <p class="section-lede" data-reveal>
+        Each project below is logged the way I log everything at the bench:
+        who, where, how long, and what technique. Click through for the full
+        writeup.
+      </p>
+
+      <div class="grid">
+        {
+          projects.map((p) => (
+            <a class="card" href={`/projects/${p.slug}`} data-reveal>
+              <ImagePlaceholder
+                alt={p.heroAlt}
+                ratio="4 / 3"
+                label={p.lab}
+                src={p.heroImage}
+                variant={p.heroImageVariant}
+              />
+              <div class="card__body">
+                <p class="sample-tag">
+                  Sample {p.number} &middot; {p.lab}
+                </p>
+                <h3 class="display card__title">{p.title}</h3>
+                <p class="card__dek">{p.dek}</p>
+                <p class="card__meta">{p.span}</p>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="skills">
+    <div class="container">
+      <p class="section-eyebrow" data-reveal>Bench &amp; lab stock</p>
+      <h2 class="display section-title-sm" data-reveal>Tools I reach for</h2>
+
+      <div class="skills__groups">
+        {
+          skillGroups.map((g) => (
+            <div class="skills__group" data-reveal>
+              <p class="skills__group-label">{g.label}</p>
+              <ul class="skills__list">
+                {g.tools.map((t) => (
+                  <li>
+                    <span class="skills__name">{t.name}</span>
+                    <span class="skills__detail">{t.detail}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="honors">
+    <div class="container">
+      <p class="section-eyebrow" data-reveal>Honors</p>
+      <ul class="honors__list" data-reveal>
+        {
+          honors.map((h) => (
+            <li>
+              <p class="honors__title">{h.title}</p>
+              <p class="honors__detail">{h.detail}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="teaser">
+    <div class="container teaser__inner" data-reveal>
+      <div>
+        <p class="hand teaser__note">also true about me &mdash;</p>
+        <h2 class="display section-title-sm">
+          Outside the lab, I'm usually building something else
+        </h2>
+        <p class="section-lede">
+          CAD and laser cutting at Cornell Maker Club, mentoring through the
+          Undergraduate Research Board, and running fundraising for Lambda
+          Phi Epsilon.
+        </p>
+      </div>
+      <a href="/outside-the-lab" class="btn">See more &rarr;</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    padding-block: var(--sp-7) var(--sp-6);
+    overflow: hidden;
+  }
+
+  .hero__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+  }
+
+  .hero__tag {
+    align-self: flex-start;
+  }
+
+  .hero__name {
+    font-size: clamp(3.5rem, 11vw, var(--fs-4xl));
+    line-height: 0.95;
+  }
+
+  .hero__role {
+    max-width: 46ch;
+    font-size: var(--fs-md);
+    color: var(--ink-soft);
+    font-weight: 200;
+  }
+
+  .hero__curve {
+    width: 100%;
+    height: 120px;
+    margin-top: var(--sp-3);
+  }
+
+  .hero__scroll {
+    text-decoration: none;
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--cobalt-deep);
+    width: fit-content;
+  }
+
+  .work,
+  .skills,
+  .honors,
+  .teaser {
+    padding-block: var(--sp-7);
+    border-top: 1px solid var(--rule);
+  }
+
+  .honors {
+    padding-block-start: var(--sp-6);
+  }
+
+  .section-eyebrow {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: var(--fs-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cobalt);
+    margin-bottom: var(--sp-2);
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 5vw, var(--fs-2xl));
+    max-width: 18ch;
+    margin-bottom: var(--sp-2);
+  }
+
+  .section-title-sm {
+    font-size: clamp(1.75rem, 4vw, var(--fs-xl));
+    max-width: 22ch;
+    margin-bottom: var(--sp-2);
+  }
+
+  .section-lede {
+    max-width: 55ch;
+    color: var(--ink-soft);
+    font-size: var(--fs-md);
+    margin-bottom: var(--sp-5);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-4);
+  }
+
+  @media (min-width: 720px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .card {
+    display: block;
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform 0.35s var(--ease-out);
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+  }
+
+  .card__body {
+    padding-top: var(--sp-2);
+  }
+
+  .card__title {
+    font-size: var(--fs-xl);
+    margin-block: 0.2em 0.3em;
+  }
+
+  .card__dek {
+    color: var(--ink-soft);
+    max-width: 40ch;
+    margin-bottom: var(--sp-1);
+  }
+
+  .card__meta {
+    font-size: var(--fs-xs);
+    color: var(--ink-soft);
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+
+  .skills__groups {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-5);
+    margin-top: var(--sp-5);
+  }
+
+  @media (min-width: 640px) {
+    .skills__groups {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--sp-6);
+    }
+  }
+
+  @media (min-width: 980px) {
+    .skills__groups {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .skills__group-label {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: var(--fs-xs);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    padding-bottom: var(--sp-2);
+    margin-bottom: var(--sp-2);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .skills__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2);
+  }
+
+  .skills__list li {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .skills__name {
+    font-family: var(--font-display);
+    font-size: var(--fs-md);
+    color: var(--ink);
+  }
+
+  .skills__detail {
+    font-size: var(--fs-xs);
+    color: var(--ink-soft);
+  }
+
+  .honors__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-4);
+  }
+
+  @media (min-width: 640px) {
+    .honors__list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .honors__title {
+    font-weight: 600;
+  }
+
+  .honors__detail {
+    color: var(--ink-soft);
+    font-size: var(--fs-sm);
+  }
+
+  .teaser__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--sp-4);
+  }
+
+  .teaser__note {
+    font-size: var(--fs-lg);
+    transform: rotate(-2deg);
+    margin-bottom: var(--sp-1);
+    display: inline-block;
+  }
+
+  .btn {
+    text-decoration: none;
+    color: var(--paper);
+    background: var(--cobalt);
+    padding: 0.9em 1.6em;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: var(--fs-sm);
+    white-space: nowrap;
+    transition: background 0.2s var(--ease-out);
+  }
+
+  .btn:hover {
+    background: var(--cobalt-deep);
+  }
+</style>

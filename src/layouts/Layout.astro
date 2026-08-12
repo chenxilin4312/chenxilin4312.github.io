@@ -1,4 +1,5 @@
 ---
+import { withBase } from "../lib/base";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
@@ -17,11 +18,11 @@ const { title, description, sample } = Astro.props as Props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={withBase("/favicon.svg")} />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="preload" href="/fonts/nightingale/DTNightingale-Light.otf" as="font" type="font/otf" crossorigin />
-    <link rel="preload" href="/fonts/mori/PPMori-Regular.otf" as="font" type="font/otf" crossorigin />
+    <link rel="preload" href={withBase("/fonts/nightingale/DTNightingale-Light.otf")} as="font" type="font/otf" crossorigin />
+    <link rel="preload" href={withBase("/fonts/mori/PPMori-Regular.otf")} as="font" type="font/otf" crossorigin />
   </head>
   <body>
     <Nav sample={sample} />

@@ -1,4 +1,5 @@
 ---
+import { withBase } from "../../lib/base";
 import Layout from "../../layouts/Layout.astro";
 import ImagePlaceholder from "../../components/ImagePlaceholder.astro";
 import { projects } from "../../lib/data";
@@ -25,7 +26,7 @@ const { project: p, prev, next } = Astro.props;
   <article>
     <header class="head">
       <div class="container">
-        <a href="/#work" class="back" data-reveal>&larr; Sample Log</a>
+        <a href={withBase("/#work")} class="back" data-reveal>&larr; Sample Log</a>
 
         <p class="sample-tag head__tag" data-reveal>
           Sample {p.number} &middot; {p.lab} &middot; {p.role}
@@ -115,11 +116,11 @@ const { project: p, prev, next } = Astro.props;
     </div>
 
     <nav class="pager" aria-label="More samples">
-      <a href={`/projects/${prev.slug}`} class="pager__link">
+      <a href={withBase(`/projects/${prev.slug}`)} class="pager__link">
         <span class="pager__dir">&larr; Previous</span>
         <span class="pager__title">{prev.title}</span>
       </a>
-      <a href={`/projects/${next.slug}`} class="pager__link pager__link--next">
+      <a href={withBase(`/projects/${next.slug}`)} class="pager__link pager__link--next">
         <span class="pager__dir">Next &rarr;</span>
         <span class="pager__title">{next.title}</span>
       </a>

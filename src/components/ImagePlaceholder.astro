@@ -1,4 +1,6 @@
 ---
+import { withBase } from "../lib/base";
+
 export type Props = {
   alt: string;
   ratio?: string; // e.g. "16 / 9"
@@ -25,7 +27,7 @@ const {
           class={`frame__inner frame__inner--${variant}`}
           data-parallax
         >
-          <img class="frame__img" src={src} alt={alt} loading="lazy" />
+          <img class="frame__img" src={withBase(src)} alt={alt} loading="lazy" />
         </div>
         {caption && <span class="frame__caption">{caption}</span>}
       </Fragment>

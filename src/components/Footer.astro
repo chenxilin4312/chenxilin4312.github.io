@@ -1,3 +1,7 @@
+---
+import { withBase } from "../lib/base";
+---
+
 <footer class="footer">
   <div class="container footer__inner">
     <div>
@@ -7,7 +11,7 @@
     <div class="footer__links">
       <a href="mailto:cl2732@cornell.edu">cl2732@cornell.edu</a>
       <a href="https://linkedin.com/in/chenxilin4312" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="/resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
+      <a href={withBase("/resume.pdf")} target="_blank" rel="noopener">Résumé (PDF)</a>
     </div>
   </div>
   <div class="container">

@@ -1,4 +1,5 @@
 ---
+import { withBase } from "../lib/base";
 import Layout from "../layouts/Layout.astro";
 ---
 
@@ -8,7 +9,7 @@ import Layout from "../layouts/Layout.astro";
 >
   <section class="head">
     <div class="container">
-      <a href="/" class="back" data-reveal>&larr; Home</a>
+      <a href={withBase("/")} class="back" data-reveal>&larr; Home</a>
       <p class="sample-tag" data-reveal>Open to biotech R&amp;D roles</p>
       <h1 class="display title" data-reveal>Let's talk.</h1>
       <p class="lede" data-reveal>
@@ -34,7 +35,7 @@ import Layout from "../layouts/Layout.astro";
           <span class="link__label">Phone</span>
           <span class="link__value">(917) 225-1626</span>
         </a>
-        <a class="link" href="/resume.pdf" target="_blank" rel="noopener">
+        <a class="link" href={withBase("/resume.pdf")} target="_blank" rel="noopener">
           <span class="link__label">Résumé</span>
           <span class="link__value">Download PDF &rarr;</span>
         </a>

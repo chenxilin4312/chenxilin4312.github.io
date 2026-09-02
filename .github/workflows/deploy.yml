@@ -16,23 +16,10 @@ jobs:
         uses: actions/checkout@v4
 
       # mori/ and comico/ are git-ignored in this (public) repo per their
-      # licences — see FONTS.md. They live in a private companion repo and
-      # get copied in here before the build, same as scripts/deploy.sh does
-      # from local disk.
-      - name: Checkout licensed fonts (private)
-        uses: actions/checkout@v4
-        with:
-          repository: chenxilin4312/site-fonts-private
-          token: ${{ secrets.FONTS_REPO_TOKEN }}
-          path: _fonts
-
-      - name: Install licensed fonts
-        run: |
-          mkdir -p public/fonts
-          cp -R _fonts/mori public/fonts/mori
-          cp -R _fonts/comico public/fonts/comico
-          rm -rf _fonts
-
+      # licences — see FONTS.md. CI has no access to them, so this build
+      # falls back to the stacks in src/styles/tokens.css (layout holds,
+      # type looks different). Run `npm run deploy` locally for a build
+      # with the real fonts, since they're present on disk there.
       - name: Set up Node
         uses: actions/setup-node@v4
         with:

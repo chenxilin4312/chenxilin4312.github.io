@@ -22,4 +22,4 @@ git commit -qm "Deploy site $(date -u '+%Y-%m-%d %H:%M UTC')"
 git push -qf "$REMOTE" gh-pages:gh-pages
 rm -rf .git
 
-echo "Deployed to https://kevinlin4312-del.github.io/chenxilin.github.io/"
+echo "Deployed to https://chenxilin4312.github.io/"

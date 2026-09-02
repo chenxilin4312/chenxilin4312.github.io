@@ -45,12 +45,14 @@ Feel free to check [our documentation](https://docs.astro.build) or jump into ou
 ## Deployment
 
 The site is published with GitHub Pages at
-<https://kevinlin4312-del.github.io/chenxilin.github.io/>.
+<https://chenxilin4312.github.io/>.
 
 `npm run deploy` builds the site and force-pushes `dist/` to the `gh-pages`
 branch, which Pages serves. `main` holds the source only.
 
-Because Pages serves the site from the `/chenxilin` subpath, `astro.config.mjs`
-sets `base`, and every root-relative link and asset goes through `withBase()`
-in `src/lib/base.ts`. Adding a new one means using that helper — a bare
-`href="/foo"` will 404 in production while working fine in `astro dev`.
+The repo is named `chenxilin4312.github.io`, so Pages serves it as a *user
+page* at the domain root and `astro.config.mjs` sets no `base`. Root-relative
+links and assets still go through `withBase()` in `src/lib/base.ts`, which is a
+no-op at the root — keep using it, so renaming the repo (which would turn this
+back into a project page served from `/<repo>/`) stays a one-line config change
+instead of a site-wide find-and-replace.

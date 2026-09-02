@@ -42,6 +42,11 @@ All commands are run from the root of the project, from a terminal:
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
 
+## Fonts
+
+Two of the three families are git-ignored for licensing reasons, so a fresh
+clone renders with fallback type until you download them. See [FONTS.md](FONTS.md).
+
 ## Deployment
 
 The site is published with GitHub Pages at

@@ -1,6 +1,6 @@
 export type Project = {
   slug: string;
-  number: string; // e.g. "01 / 04" position in the sample log
+  number: string; // e.g. "01 / 05" position in the sample log
   lab: string;
   role: string;
   location: string;
@@ -31,7 +31,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "joey-elm",
-    number: "01 / 04",
+    number: "01 / 05",
     lab: "Joey ELM",
     role: "Co-Founder & CEO",
     location: "Ithaca, NY",
@@ -111,7 +111,7 @@ export const projects: Project[] = [
   },
   {
     slug: "lee-lab",
-    number: "02 / 04",
+    number: "02 / 05",
     lab: "Lee Lab",
     role: "Research Assistant",
     location: "Cornell University, Ithaca, NY",
@@ -147,7 +147,7 @@ export const projects: Project[] = [
   },
   {
     slug: "roeder-lab",
-    number: "03 / 04",
+    number: "03 / 05",
     lab: "Roeder Lab",
     role: "Undergraduate Researcher",
     location: "Cornell University, Ithaca, NY",
@@ -206,7 +206,7 @@ export const projects: Project[] = [
   },
   {
     slug: "blenis-lab",
-    number: "04 / 04",
+    number: "04 / 05",
     lab: "Blenis Lab",
     role: "Undergraduate Researcher",
     location: "Weill Cornell Medicine, New York, NY",
@@ -276,6 +276,39 @@ export const projects: Project[] = [
     heroImage: "/images/blenis-lab/pc3-confocal.jpg",
     heroImageVariant: "photo",
     heroCaption: "PC3 prostate cancer cells, confocal · Griersonj5, CC BY-SA 4.0",
+  },
+  {
+    slug: "livecell-segmentation",
+    number: "05 / 05",
+    lab: "LIVECell U-Net Segmentation",
+    role: "Independent Project",
+    location: "Ithaca, NY",
+    span: "August 2026",
+    techniques: ["PyTorch", "Python", "Streamlit", "scikit-image", "NumPy"],
+    title: "LIVECell U-Net Segmentation",
+    dek: "A U-Net segmentation pipeline for the LIVECell benchmark, rebuilt around a three-class boundary model to pull cells apart where plain Dice can't tell.",
+    hook: "Dice score looks great even when a model can't tell two touching cells apart — it just doesn't penalize a merged blob the way it should. I wanted a segmentation pipeline that got that failure mode right, so I built one against the LIVECell benchmark and measured it with metrics that actually catch it.",
+    sections: [
+      {
+        heading: "The pipeline",
+        body: [
+          "I built and scaled a U-Net segmentation pipeline on the LIVECell benchmark — 5,387 images across 8 cancer cell lines — converting COCO annotations into cached instance masks across the official train/validation/test splits.",
+        ],
+      },
+      {
+        heading: "Splitting touching cells apart",
+        body: [
+          "Plain binary segmentation merges cells that touch. I replaced it with a three-class interior/boundary model, trained with a distance-weighted border loss and decoded with seeded watershed, which improved CTC SEG from ~0.55 to ~0.72 while reaching 0.92 Dice and 0.85 IoU.",
+        ],
+      },
+      {
+        heading: "Evaluating past aggregate Dice",
+        body: [
+          "Aggregate Dice hides exactly the failures this project targeted, so I built instance-level evaluation instead: CTC SEG, detection F1, merge/split error counts, COCO AP/AFNR, and size-stratified recall, to surface failures that a single blended score would bury.",
+        ],
+      },
+    ],
+    heroAlt: "U-Net instance segmentation of LIVECell microscopy images, cells separated by a three-class interior/boundary model",
   },
 ];
 

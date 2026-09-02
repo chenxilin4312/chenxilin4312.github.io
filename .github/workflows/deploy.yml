@@ -1,0 +1,53 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout site
+        uses: actions/checkout@v4
+
+      # mori/ and comico/ are git-ignored in this (public) repo per their
+      # licences — see FONTS.md. They live in a private companion repo and
+      # get copied in here before the build, same as scripts/deploy.sh does
+      # from local disk.
+      - name: Checkout licensed fonts (private)
+        uses: actions/checkout@v4
+        with:
+          repository: chenxilin4312/site-fonts-private
+          token: ${{ secrets.FONTS_REPO_TOKEN }}
+          path: _fonts
+
+      - name: Install licensed fonts
+        run: |
+          mkdir -p public/fonts
+          cp -R _fonts/mori public/fonts/mori
+          cp -R _fonts/comico public/fonts/comico
+          rm -rf _fonts
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          force_orphan: true

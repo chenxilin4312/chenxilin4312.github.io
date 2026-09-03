@@ -22,10 +22,3 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
-
-# Licensed font binaries — see FONTS.md and licenses/.
-# Comico's EULA forbids uploading the files to a public server, and PP Mori's
-# forbids providing third parties access to them, so neither may live in this
-# public repo. They stay on disk locally and are copied into the build.
-public/fonts/comico/
-public/fonts/mori/

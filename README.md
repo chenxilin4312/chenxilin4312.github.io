@@ -44,8 +44,9 @@ Feel free to check [our documentation](https://docs.astro.build) or jump into ou
 
 ## Fonts
 
-Two of the three families are git-ignored for licensing reasons, so a fresh
-clone renders with fallback type until you download them. See [FONTS.md](FONTS.md).
+All three families are SIL OFL: Inter and Caveat install from npm, Nightingale
+is committed. A fresh clone builds with the real type, no extra steps. See
+[FONTS.md](FONTS.md).
 
 ## Deployment
 

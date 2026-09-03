@@ -15,11 +15,9 @@ jobs:
       - name: Checkout site
         uses: actions/checkout@v4
 
-      # mori/ and comico/ are git-ignored in this (public) repo per their
-      # licences — see FONTS.md. CI has no access to them, so this build
-      # falls back to the stacks in src/styles/tokens.css (layout holds,
-      # type looks different). Run `npm run deploy` locally for a build
-      # with the real fonts, since they're present on disk there.
+      # Every face is SIL OFL now: Inter and Caveat install from npm, and
+      # Nightingale is committed under public/fonts. Nothing has to be
+      # injected here, so this build is byte-equivalent to a local one.
       - name: Set up Node
         uses: actions/setup-node@v4
         with:

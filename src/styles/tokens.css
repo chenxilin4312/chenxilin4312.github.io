@@ -11,8 +11,8 @@
 
   /* Type */
   --font-display: "Nightingale", "Iowan Old Style", serif;
-  --font-body: "Mori", -apple-system, "Helvetica Neue", Arial, sans-serif;
-  --font-hand: "Comico", cursive;
+  --font-body: "Inter", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-hand: "Caveat", cursive;
 
   --fs-2xs: 0.6875rem;
   --fs-xs: 0.8125rem;

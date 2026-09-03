@@ -2,6 +2,16 @@
 import { withBase } from "../lib/base";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+
+// Inter and Caveat come from npm rather than public/, so a clean CI checkout
+// builds with the real type. Both are SIL OFL. Latin subsets only — the site
+// has no other scripts. See FONTS.md.
+import "@fontsource/inter/latin-200.css";
+import "@fontsource/inter/latin-400.css";
+import "@fontsource/inter/latin-400-italic.css";
+import "@fontsource/inter/latin-600.css";
+import "@fontsource/caveat/latin-400.css";
+
 import "../styles/global.css";
 
 export type Props = {
@@ -22,7 +32,6 @@ const { title, description, sample } = Astro.props as Props;
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="preload" href={withBase("/fonts/nightingale/DTNightingale-Light.otf")} as="font" type="font/otf" crossorigin />
-    <link rel="preload" href={withBase("/fonts/mori/PPMori-Regular.otf")} as="font" type="font/otf" crossorigin />
   </head>
   <body>
     <Nav sample={sample} />

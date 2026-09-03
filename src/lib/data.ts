@@ -1,6 +1,7 @@
 export type Project = {
   slug: string;
-  number: string; // e.g. "01 / 05" position in the sample log
+  kind: "lab" | "project"; // which home page section this shows under
+  number: string; // e.g. "01 / 03" position within its section
   lab: string;
   role: string;
   location: string;
@@ -31,7 +32,8 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "livecell-segmentation",
-    number: "01 / 05",
+    kind: "project",
+    number: "01 / 02",
     lab: "LIVECell U-Net Segmentation",
     role: "Independent Project",
     location: "Ithaca, NY",
@@ -64,7 +66,8 @@ export const projects: Project[] = [
   },
   {
     slug: "joey-elm",
-    number: "02 / 05",
+    kind: "project",
+    number: "02 / 02",
     lab: "Joey ELM",
     role: "Co-Founder & CEO",
     location: "Ithaca, NY",
@@ -144,7 +147,8 @@ export const projects: Project[] = [
   },
   {
     slug: "lee-lab",
-    number: "03 / 05",
+    kind: "lab",
+    number: "01 / 03",
     lab: "Lee Lab",
     role: "Research Assistant",
     location: "Cornell University, Ithaca, NY",
@@ -180,7 +184,8 @@ export const projects: Project[] = [
   },
   {
     slug: "roeder-lab",
-    number: "04 / 05",
+    kind: "lab",
+    number: "02 / 03",
     lab: "Roeder Lab",
     role: "Undergraduate Researcher",
     location: "Cornell University, Ithaca, NY",
@@ -239,7 +244,8 @@ export const projects: Project[] = [
   },
   {
     slug: "blenis-lab",
-    number: "05 / 05",
+    kind: "lab",
+    number: "03 / 03",
     lab: "Blenis Lab",
     role: "Undergraduate Researcher",
     location: "Weill Cornell Medicine, New York, NY",

@@ -48,21 +48,42 @@ export const projects: Project[] = [
         body: [
           "I built and scaled a U-Net segmentation pipeline on the LIVECell benchmark — 5,387 images across 8 cancer cell lines — converting COCO annotations into cached instance masks across the official train/validation/test splits.",
         ],
+        image: {
+          src: "/images/livecell-segmentation/raw-microscopy.jpg",
+          alt: "Raw phase-contrast microscopy frame of touching HeLa cells from the held-out test set",
+          caption: "Raw input frame, held-out test set",
+          variant: "photo",
+        },
       },
       {
         heading: "Splitting touching cells apart",
         body: [
           "Plain binary segmentation merges cells that touch. I replaced it with a three-class interior/boundary model, trained with a distance-weighted border loss and decoded with seeded watershed, which improved CTC SEG from ~0.55 to ~0.72 while reaching 0.92 Dice and 0.85 IoU.",
         ],
+        image: {
+          src: "/images/livecell-segmentation/instance-separation.jpg",
+          alt: "Seeded-watershed instance segmentation output, each detected cell rendered in a distinct color",
+          caption: "Instance decode, one color per detected cell",
+          variant: "figure",
+        },
       },
       {
         heading: "Evaluating past aggregate Dice",
         body: [
           "Aggregate Dice hides exactly the failures this project targeted, so I built instance-level evaluation instead: CTC SEG, detection F1, merge/split error counts, COCO AP/AFNR, and size-stratified recall, to surface failures that a single blended score would bury.",
         ],
+        image: {
+          src: "/images/livecell-segmentation/probability-map.jpg",
+          alt: "Per-pixel foreground probability heatmap output by the U-Net, before thresholding and watershed decoding",
+          caption: "Foreground probability, pre-threshold",
+          variant: "figure",
+        },
       },
     ],
     heroAlt: "U-Net instance segmentation of LIVECell microscopy images, cells separated by a three-class interior/boundary model",
+    heroImage: "/images/livecell-segmentation/hero.jpg",
+    heroImageVariant: "photo",
+    heroCaption: "TP green / FP magenta / FN cyan, three-class watershed decode",
   },
   {
     slug: "joey-elm",

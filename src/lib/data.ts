@@ -197,6 +197,12 @@ export const projects: Project[] = [
           "Gelatin sets as it cools, held together by physical triple-helix junctions that come apart again at 37 °C. Microbial transglutaminase (mTG) adds covalent crosslinks between glutamine and lysine residues on neighboring chains, so a well-crosslinked gel stays solid after those helices melt.",
           "I used food-grade gelatin and food-grade mTG, with a sous vide circulator as the water bath, to keep the scaffold cheap. Food-grade mTG doesn't list its enzyme activity, so I had to find the working dose by experiment. I wrote that as a dose-finding SOP: dose as a percentage of gelatin mass, enzyme added at 35 °C, overnight crosslinking at room temperature, then a tube-inversion challenge at 37 °C scored on a 0–2 rubric.",
         ],
+        image: {
+          src: "/images/gelatin-scaffold/cast-gels.jpg",
+          alt: "12-well plate of freshly cast gelatin hydrogels, three replicates at each of 0, 8, 10 and 15% mTG",
+          caption: "Cast gels, triplicate at 0 / 8 / 10 / 15% mTG",
+          variant: "photo",
+        },
       },
       {
         heading: "Finding the dose",
@@ -218,8 +224,9 @@ export const projects: Project[] = [
           "In one-way ANOVA, the differences across all four groups were significant, but the 0% control accounted for all of it. Among the three crosslinked doses, neither gel fraction (p = 0.17) nor swelling (p = 0.53) differed, which suggests crosslinking is close to saturated by 8% mTG. With n = 3, uneven cast masses, and drying that may not have reached constant mass, smaller differences could have been missed. I note that in the writeup rather than treat the plateau as settled.",
         ],
         image: {
-          alt: "Cast gelatin hydrogels at 0, 8, 10 and 15% mTG before the gel fraction assay",
-          label: "Cast gels, gel fraction assay",
+          src: "/images/gelatin-scaffold/dried-gels.jpg",
+          alt: "12-well plate of dried gels after 24 h in water at 37 °C: the 0% mTG wells are empty, while the 8%, 10% and 15% wells each hold a dried gel labeled with its swollen mass",
+          caption: "Dried gels after the 37 °C soak; the 0% column dissolved",
           variant: "photo",
         },
       },

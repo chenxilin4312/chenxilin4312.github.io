@@ -33,7 +33,7 @@ export const projects: Project[] = [
   {
     slug: "livecell-segmentation",
     kind: "project",
-    number: "01 / 02",
+    number: "01 / 03",
     lab: "LIVECell U-Net Segmentation",
     role: "Independent Project",
     location: "Ithaca, NY",
@@ -88,7 +88,7 @@ export const projects: Project[] = [
   {
     slug: "joey-elm",
     kind: "project",
-    number: "02 / 02",
+    number: "02 / 03",
     lab: "Joey ELM",
     role: "Co-Founder & CEO",
     location: "Ithaca, NY",
@@ -165,6 +165,75 @@ export const projects: Project[] = [
     liveUrl: "https://joeyelm.com",
     heroAlt: "Joey ELM landing page, showing the live lab mind graph",
     heroImage: "/images/joey-elm/hero.jpg",
+  },
+  {
+    slug: "gelatin-scaffold",
+    kind: "project",
+    number: "03 / 03",
+    lab: "Porous Gelatin Hydrogel Scaffold",
+    role: "Independent Research",
+    location: "Ithaca, NY",
+    span: "October 2026 — Present",
+    techniques: [
+      "Hydrogel fabrication",
+      "Enzymatic crosslinking",
+      "Gel fraction & swelling assays",
+      "ANOVA",
+      "SOP writing",
+    ],
+    title: "Porous Gelatin Hydrogel Scaffold",
+    dek: "A low-cost, gas-foamed gelatin scaffold for 3D cell culture, crosslinked with transglutaminase so it survives 37 °C.",
+    hook: "3D cell culture scaffolds are expensive, but gelatin is cheap. The catch is that gelatin melts at body temperature, around 30–35 °C. I'm building a porous gelatin scaffold from food-grade ingredients, and the first job was finding how much enzyme it takes to lock the gel in place so it holds up in an incubator.",
+    stats: [
+      { value: "0–15%", label: "mTG doses tested" },
+      { value: "24 h", label: "solid at 37 °C" },
+      { value: "91–96%", label: "mean gel fraction, crosslinked" },
+      { value: "8%", label: "mTG where crosslinking plateaus" },
+    ],
+    sections: [
+      {
+        heading: "The approach",
+        body: [
+          "Gelatin sets as it cools, held together by physical triple-helix junctions that come apart again at 37 °C. Microbial transglutaminase (mTG) adds covalent crosslinks between glutamine and lysine residues on neighboring chains, so a well-crosslinked gel stays solid after those helices melt.",
+          "I used food-grade gelatin and food-grade mTG, with a sous vide circulator as the water bath, to keep the scaffold cheap. Food-grade mTG doesn't list its enzyme activity, so I had to find the working dose by experiment. I wrote that as a dose-finding SOP: dose as a percentage of gelatin mass, enzyme added at 35 °C, overnight crosslinking at room temperature, then a tube-inversion challenge at 37 °C scored on a 0–2 rubric.",
+        ],
+      },
+      {
+        heading: "Finding the dose",
+        body: [
+          "The first run tested 0, 2, 5, and 10% mTG. After 2 h at 37 °C, the 0% and 2% gels melted within about 5 minutes, the 5% gel partly melted, and only the 10% gel stayed solid when the tube was inverted.",
+          "The second run moved the range up to 0, 8, 10, and 15% and held the gels at 37 °C for a full 24 hours. The uncrosslinked control melted in about 5 minutes. Every crosslinked gel stayed solid and stuck to the bottom of the inverted tube, and gelation time dropped from 45 minutes at 0% to 30 minutes at 15%.",
+        ],
+        image: {
+          src: "/images/gelatin-scaffold/inversion-2h.jpg",
+          alt: "First dose run, inverted tubes after 2 h at 37 °C: the 0% and 2% mTG gels melted, 5% partly melted, and 10% stayed solid",
+          caption: "First run, 0 / 2 / 5 / 10% mTG after 2 h at 37 °C",
+          variant: "photo",
+        },
+      },
+      {
+        heading: "Gel fraction and swelling",
+        body: [
+          "To measure crosslinking directly, I cast gels at each dose, soaked them in water at 37 °C for 24 hours, and dried them to measure the mass that didn't dissolve. Mean gel fraction was 90.9% at 8% mTG, 91.8% at 10%, and 95.5% at 15%, and the gels roughly doubled in wet mass (mean swelling 85–104%). The 0% control dissolved completely.",
+          "In one-way ANOVA, the differences across all four groups were significant, but the 0% control accounted for all of it. Among the three crosslinked doses, neither gel fraction (p = 0.17) nor swelling (p = 0.53) differed, which suggests crosslinking is close to saturated by 8% mTG. With n = 3, uneven cast masses, and drying that may not have reached constant mass, smaller differences could have been missed. I note that in the writeup rather than treat the plateau as settled.",
+        ],
+        image: {
+          alt: "Cast gelatin hydrogels at 0, 8, 10 and 15% mTG before the gel fraction assay",
+          label: "Cast gels, gel fraction assay",
+          variant: "photo",
+        },
+      },
+      {
+        heading: "What's next",
+        body: [
+          "The next experiment holds mTG at 10% and varies gelatin concentration from 5% to 15% w/v. 8% performed as well as 10%, but 10% leaves margin for the thin walls of a foamed scaffold. I'm also switching to a liquid enzyme stock to avoid extra dilution, casting gels by weight, adding replicates, and drying to constant mass before calculating gel fraction. Stiffness testing is planned if I can measure it. From there, the working dose goes into gas-foamed scaffold runs.",
+        ],
+      },
+    ],
+    heroAlt: "Four inverted conical tubes after 24 h at 37 °C: the 0% mTG control melted to the cap, while the 8%, 10% and 15% gels stayed solid at the top",
+    heroImage: "/images/gelatin-scaffold/inversion-24h.jpg",
+    heroImageVariant: "photo",
+    heroCaption: "0 / 8 / 10 / 15% mTG, inverted after 24 h at 37 °C",
   },
   {
     slug: "lee-lab",
